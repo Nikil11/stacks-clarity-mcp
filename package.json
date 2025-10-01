@@ -1,0 +1,64 @@
+{
+  "name": "@stacks/stacks-clarity-mcp",
+  "version": "0.1.0",
+  "main": "dist/server.js",
+  "module": "dist/server.js",
+  "bin": {
+    "stacks-mcp": "dist/server.js"
+  },
+  "keywords": [
+    "mcp",
+    "stacks",
+    "clarity",
+    "stacks mcp",
+    "blockchain",
+    "smart contracts"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stacks-org/stacks-clarity-mcp"
+  },
+  "homepage": "https://github.com/stacks-org/stacks-clarity-mcp/blob/main/README.md",
+  "bugs": {
+    "url": "https://github.com/stacks-org/stacks-clarity-mcp/issues"
+  },
+  "license": "Apache-2.0",
+  "author": "Stacks Foundation",
+  "type": "module",
+  "description": "A MCP server for Stacks Clarity best practices and SIP standards",
+  "files": [
+    "dist",
+    "package.json"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && tsc && cp -r src/resources dist/",
+    "start": "npm run build && tsx src/server.ts",
+    "dev": "npm run build && fastmcp dev src/server.ts",
+    "prepublishOnly": "node ./scripts/inject-client-id.js && npm run build",
+    "postpublish": "node ./scripts/restore-client-id.js",
+    "lint": "prettier --check . && eslint . && tsc --noEmit",
+    "test": "vitest run",
+    "format": "prettier --write . && eslint --fix ."
+  },
+  "dependencies": {
+    "@stacks/transactions": "^6.13.0",
+    "@stacks/network": "^6.13.0",
+    "@stacks/stacks-blockchain-api-types": "^7.0.0",
+    "@stacks/connect": "^7.6.0",
+    "dotenv": "^16.6.1",
+    "fastmcp": "^1.27.3",
+    "zod": "^3.24.4"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.26.0",
+    "@tsconfig/node22": "^22.0.1",
+    "@types/node": "^24.0.1",
+    "eslint-config-prettier": "^10.1.3",
+    "eslint-plugin-perfectionist": "^4.12.3",
+    "prettier": "^3.5.3",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.32.0",
+    "vitest": "^3.1.3"
+  }
+}
