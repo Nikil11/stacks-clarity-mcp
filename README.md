@@ -28,9 +28,9 @@ This comprehensive MCP server provides a complete Stacks development toolkit, im
 
 ## 🛠️ Quick Setup for Cursor/Claude Code
 
-### Option 1: Use Published Package (Recommended)
+### Option 1: Use Published Package (When Available)
 
-Create `.cursor/mcp.json` in your project:
+Once published to npm, create `.cursor/mcp.json` in your project:
 
 ```json
 {
@@ -47,22 +47,28 @@ Create `.cursor/mcp.json` in your project:
 }
 ```
 
-### Option 2: Local Development Setup
+### Option 2: Local Development Setup (Current)
 
 1. **Clone and install**:
 ```bash
-git clone <repository-url>
-cd stacks-mcp-server
+git clone https://github.com/YOUR_USERNAME/stacks-clarity-mcp.git
+cd stacks-clarity-mcp
 npm install
 ```
 
-2. **Configure Cursor** - Create `.cursor/mcp.json`:
+2. **Build the project**:
+```bash
+npm run build
+```
+> **Note**: This generates the `dist/` folder with compiled JavaScript. The build is required before running the server.
+
+3. **Configure Cursor** - Create `.cursor/mcp.json` in your project root:
 ```json
 {
   "mcpServers": {
     "stacks-clarity-mcp": {
       "command": "npx",
-      "args": ["-y", "tsx", "/absolute/path/to/stacks-mcp-server/src/server.ts"],
+      "args": ["-y", "tsx", "/absolute/path/to/stacks-clarity-mcp/src/server.ts"],
       "env": {
         "HIRO_API_KEY": "",
         "STACKS_NETWORK": "testnet"
@@ -71,10 +77,11 @@ npm install
   }
 }
 ```
+> **Important**: Replace `/absolute/path/to/stacks-clarity-mcp` with your actual path!
 
-3. **Restart Cursor** completely (quit and reopen)
+4. **Restart Cursor** completely (quit and reopen)
 
-4. **Verify Setup**:
+5. **Verify Setup**:
    - Go to `Cursor → Settings → MCP`
    - Look for green indicator next to `stacks-clarity-mcp`
    - Switch to **Agent** mode in chat
@@ -94,6 +101,22 @@ For enhanced features and higher rate limits:
 3. Add to `HIRO_API_KEY` in your config
 
 📚 **Detailed guides**: See [`integration_guides/`](integration_guides/) folder for [Cursor](integration_guides/cursor.md), [Claude Code](integration_guides/claude_code.md), and [Development](integration_guides/development_usage.md) setup.
+
+## 📦 What's Included in the Repository
+
+**Included (pushed to GitHub):**
+- ✅ `src/` - TypeScript source code (452KB)
+- ✅ `stacks-clarity-standards/` - All 30+ SIP standards (9.2MB)
+- ✅ `integration_guides/` - Setup documentation
+- ✅ `package.json`, `tsconfig.json` - Configuration files
+
+**Excluded (not pushed):**
+- ❌ `node_modules/` - Dependencies (165MB) - install with `npm install`
+- ❌ `dist/` - Build output (448KB) - generate with `npm run build`
+- ❌ `.cursor/` - Local MCP config
+- ❌ `.env` - Environment variables
+
+> **Setup Requirement**: After cloning, you must run `npm install` and `npm run build` before using the MCP server.
 
 ## 📖 Available Tools (32 Total)
 
