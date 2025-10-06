@@ -1,6 +1,8 @@
-# Stacks Clarity MCP Server
+# Stacks Clarity MCP Server (Unofficial)
 
 A comprehensive MCP (Model Context Protocol) server for Stacks blockchain development, providing 30+ specialized tools for Clarity smart contracts, SIP compliance, security, and performance optimization.
+
+![Stacks-AI-Guild](stacks-ai-guild-logo-ii.jpg)
 
 > 💡 **New to MCP?** Check out our [integration guides](integration_guides/) for step-by-step setup instructions for [Cursor](integration_guides/cursor.md), [Claude Code](integration_guides/claude_code.md), or [local development](integration_guides/development_usage.md).
 
